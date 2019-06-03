@@ -1,0 +1,11 @@
+.comment-section {
+  position: relative;
+  width: 100%;
+  font-size: 2.5rem;
+}
+
+.comment-section span {
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding-right: 5px;
+}
