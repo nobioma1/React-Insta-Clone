@@ -1,11 +1,15 @@
 import React from 'react';
 import Comment from './Comment';
-import './comments.css'
+import './comments.css';
 
-const Comments = () => {
+const Comments = props => {
   return (
     <div className="comment-section">
-      <Comment />
+      {props.postComments.map((comment, index) => (
+        <div key={`${comment.id}-${index}`}>
+          <Comment comment={comment} />
+        </div>
+      ))}
     </div>
   );
 };
