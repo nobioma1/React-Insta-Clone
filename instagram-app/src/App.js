@@ -10,14 +10,32 @@ class App extends React.Component {
     super();
     this.state = {
       appData: dummyData
-    }
+    };
   }
+
+  addComment = (postId, comment) => {
+    const posts = this.state.appData;
+    const postIndex = this.state.appData.findIndex(post => post.id === postId);
+    const newPost = {
+      ...posts[postIndex],
+      comments: [
+        ...posts[postIndex].comments,
+        { username: 'thenewuser_', text: comment }
+      ]
+    };
+    posts[postIndex] = newPost;
+    this.setState({ appData: posts });
+  };
+
   render() {
     return (
       <div className="App">
         <Header />
         <main className="main-container">
-          <PostContainer appData={this.state.appData} />
+          <PostContainer
+            appData={this.state.appData}
+            addComment={this.addComment}
+          />
           <SideBar />
         </main>
       </div>
