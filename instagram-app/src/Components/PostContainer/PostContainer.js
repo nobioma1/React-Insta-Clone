@@ -8,7 +8,7 @@ const PostContainer = props => {
     <section className="posts-container">
       {props.appData.map(info => (
         <div key={info.id}>
-          <Post userInfo={info} />
+          <Post userInfo={info} addComment={props.addComment} />
         </div>
       ))}
     </section>

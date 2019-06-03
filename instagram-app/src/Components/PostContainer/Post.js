@@ -1,4 +1,5 @@
 import React from 'react';
+import Moment from 'moment';
 import PropTypes from 'prop-types';
 import AddComment from '../CommentSection/AddComment';
 import Comments from '../CommentSection/Comments';
@@ -7,12 +8,13 @@ import { FaRegComment } from 'react-icons/fa';
 
 const Post = props => {
   const {
+    id,
     username,
     thumbnailUrl,
     imageUrl,
     likes,
     timestamp,
-    comments
+    comments,
   } = props.userInfo;
 
   const postTime = Moment(Date.parse(timestamp)).fromNow();
@@ -50,7 +52,7 @@ const Post = props => {
         <Comments postComments={comments} />
         <p className="time">{postTime.toUpperCase()}</p>
       </div>
-      <AddComment />
+      <AddComment postId={id} addComment={props.addComment}/>
     </div>
   );
 };
@@ -63,7 +65,8 @@ Post.propTypes = {
     likes: PropTypes.number,
     timestamp: PropTypes.string.isRequired,
     comments: PropTypes.arrayOf(PropTypes.object)
-  }).isRequired
+  }).isRequired,
+  addComment: PropTypes.func
 };
 
 export default Post;
