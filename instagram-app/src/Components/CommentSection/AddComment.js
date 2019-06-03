@@ -1,13 +1,52 @@
 import React from 'react';
-import './addComment.css'
+import PropTypes from 'prop-types';
+import './addComment.css';
 
-const AddComment = () => {
-  return (
-    <div className="add-comment">
-      <input type="text" placeholder="Add a Comment..." />
-      <button>Post</button>
-    </div>
-  );
+class AddComment extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      newComment: ''
+    };
+  }
+
+  inputChange = e => {
+    this.setState({ newComment: e.target.value });
+  };
+
+  updateHandler = (e) => {
+    e.preventDefault();
+    if (this.state.newComment.length > 0) {
+      this.props.addComment(this.props.postId, this.state.newComment);
+      this.setState({ newComment: '' });
+    }
+  };
+
+  render() {
+    return (
+      <div className="add-comment">
+        <form onSubmit={(e) => this.updateHandler(e)}>
+          <input
+            type="text"
+            onChange={this.inputChange}
+            value={this.state.newComment}
+            placeholder="Add a Comment..."
+          />
+          <button
+            style={{ opacity: this.state.newComment.length > 0 ? 1 : 0.5 }}
+            type="submit"
+          >
+            Post
+          </button>
+        </form>
+      </div>
+    );
+  }
+}
+
+AddComment.propTypes = {
+  postId: PropTypes.string,
+  addComment: PropTypes.func
 };
 
 export default AddComment;
