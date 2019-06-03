@@ -1,11 +1,11 @@
-.add-comment {
+.add-comment form {
   width: 100%;
   display: flex;
   justify-content: space-between;
   border-top: 1px solid lightgray
 }
 
-.add-comment input{
+.add-comment form input{
   width: 90%;
   border: none;
   font-size: 14px;
@@ -13,26 +13,29 @@
   background-color: transparent;
 }
 @media (max-width: 500px) {
-  .add-comment input {
+  .add-comment form input {
     width: 80%;
   }
 }
 
-.add-comment input:focus{
+.add-comment form input:focus{
   outline: none;
 }
 
-.add-comment button{
+.add-comment form button{
   width: 10%;
   border: none;
   font-size: 14px;
   font-weight: bold;
   background-color: transparent;
   color: dodgerblue;
-  opacity: 0.5;
 }
 @media (max-width: 500px) {
-  .add-comment button {
+  .add-comment form button {
     width: 20%;
   }
+}
+
+.add-comment form button:focus{
+  outline: none;
 }

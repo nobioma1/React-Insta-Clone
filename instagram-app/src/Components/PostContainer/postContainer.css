@@ -58,6 +58,10 @@
   padding: 10px;
 }
 
+.image-container .post-details .like-count {
+  padding-bottom: 5px;
+}
+
 .image-container .post-details .post-icons i {
   font-size: 3.8rem;
   margin-right: 15px;
@@ -67,6 +71,7 @@
   font-size: 1.5rem;
   font-weight: bold;
   padding-right: 5px;
+
 }
 
 .post-footer {
@@ -77,6 +82,7 @@
 }
 
 .post-footer .time {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   padding-top: 10px;
+  color: gray;
 }
