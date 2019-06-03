@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Comment = () => {
+const Comment = props => {
+  const { username, text } = props.comment
   return (
     <p className="comment">
-      <span>nobleobioma_</span>this is a comment
+      <span>{username}</span>{text}
     </p>
   );
 };
