@@ -14,6 +14,9 @@ const Post = props => {
     timestamp,
     comments
   } = props.userInfo;
+
+  const postTime = Moment(Date.parse(timestamp)).fromNow();
+
   return (
     <div className="post">
       <div className="post-header">
@@ -45,7 +48,7 @@ const Post = props => {
       </div>
       <div className="post-footer">
         <Comments postComments={comments} />
-        <p className="time">{timestamp}</p>
+        <p className="time">{postTime.toUpperCase()}</p>
       </div>
       <AddComment />
     </div>
