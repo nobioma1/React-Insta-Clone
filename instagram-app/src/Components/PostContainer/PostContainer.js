@@ -2,10 +2,14 @@ import React from 'react';
 import './postContainer.css';
 import Post from './Post';
 
-const PostContainer = () => {
+const PostContainer = props => {
   return (
     <section className="posts-container">
-      <Post />
+      {props.appData.map(info => (
+        <div key={info.id}>
+          <Post userInfo={info} />
+        </div>
+      ))}
     </section>
   );
 };
