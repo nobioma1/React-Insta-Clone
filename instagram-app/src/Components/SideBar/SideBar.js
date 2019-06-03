@@ -6,7 +6,10 @@ const SideBar = () => {
     <section className="side-bar">
       <div className="user">
         <div className="avatar">
-          <img src="" alt=""/>
+          <img
+            src="https://img.icons8.com/pastel-glyph/64/000000/gender-neutral-user.png"
+            alt=""
+          />
         </div>
         <h2>Noble Obioma</h2>
       </div>
@@ -24,9 +27,7 @@ const SideBar = () => {
         </div>
         <p>No Suggestions</p>
       </div>
-      <footer>
-        &copy; 2019 InstaClone | Noble
-      </footer>
+      <footer>&copy; 2019 InstaClone | Noble</footer>
     </section>
   );
 };
