@@ -1,11 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AddComment from '../CommentSection/AddComment';
 import Comments from '../CommentSection/Comments';
 import { FiHeart, FiShare } from 'react-icons/fi';
 import { FaRegComment } from 'react-icons/fa';
 
 const Post = props => {
-  const { username, thumbnailUrl, imageUrl, likes, timestamp, comments } = props.userInfo;
+  const {
+    username,
+    thumbnailUrl,
+    imageUrl,
+    likes,
+    timestamp,
+    comments
+  } = props.userInfo;
   return (
     <div className="post">
       <div className="post-header">
@@ -36,12 +44,23 @@ const Post = props => {
         </div>
       </div>
       <div className="post-footer">
-        <Comments postComments={comments}/>
+        <Comments postComments={comments} />
         <p className="time">{timestamp}</p>
       </div>
       <AddComment />
     </div>
   );
+};
+
+Post.propTypes = {
+  userInfo: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    thumbnailUrl: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string,
+    likes: PropTypes.number,
+    timestamp: PropTypes.string.isRequired,
+    comments: PropTypes.arrayOf(PropTypes.object)
+  }).isRequired
 };
 
 export default Post;
