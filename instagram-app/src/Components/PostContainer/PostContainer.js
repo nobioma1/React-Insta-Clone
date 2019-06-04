@@ -6,11 +6,15 @@ import Post from './Post';
 const PostContainer = props => {
   return (
     <section className="posts-container">
-      {props.appData.map(info => (
-        <div key={info.id}>
-          <Post userInfo={info} addComment={props.addComment} />
-        </div>
-      ))}
+      {props.appData.length > 0 ? (
+        props.appData.map(info => (
+          <div key={info.id}>
+            <Post userInfo={info} addComment={props.addComment} />
+          </div>
+        ))
+      ) : (
+        <p className="defaultMsg">No Post Yet!</p>
+      )}
     </section>
   );
 };
@@ -26,6 +30,10 @@ PostContainer.propTypes = {
       comment: PropTypes.array
     }).isRequired
   )
+};
+
+PostContainer.defaultProps = {
+  appData: []
 };
 
 export default PostContainer;

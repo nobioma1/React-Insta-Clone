@@ -14,6 +14,12 @@
   }
 }
 
+.posts-container .defaultMsg {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 50px;
+}
+
 .post {
   margin-top: 50px;
   width: 100%;
