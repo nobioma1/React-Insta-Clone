@@ -6,8 +6,8 @@ import './comments.css';
 const Comments = props => {
   return (
     <div className="comment-section">
-      {props.postComments.map((comment, index) => (
-        <div key={`${comment.id}-${index}`}>
+      {props.postComments.map(comment => (
+        <div key={comment.id}>
           <Comment comment={comment} />
         </div>
       ))}

@@ -13,15 +13,12 @@ class App extends React.Component {
     };
   }
 
-  addComment = (postId, comment) => {
+  addComment = (postId, newComment) => {
     const posts = this.state.appData;
     const postIndex = this.state.appData.findIndex(post => post.id === postId);
     const newPost = {
       ...posts[postIndex],
-      comments: [
-        ...posts[postIndex].comments,
-        { username: 'thenewuser_', text: comment }
-      ]
+      comments: [...posts[postIndex].comments, newComment]
     };
     posts[postIndex] = newPost;
     this.setState({ appData: posts });

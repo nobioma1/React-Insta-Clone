@@ -11,15 +11,18 @@ const dummyData = [
     timestamp: "July 17 2017, 12:42:40 pm",
     comments: [
       {
+        id: "a",
         username: "philzcoffee",
         text:
           "We've got more than just delicious coffees to offer at our shops!"
       },
       {
+        id: "b",
         username: "biancasaurus",
         text: "Looks delicious!"
       },
       {
+        id: "c",
         username: "martinseludo",
         text: "Can't wait to try it!"
       }
@@ -36,22 +39,27 @@ const dummyData = [
     timestamp: "July 15 2017, 03:12:09 pm",
     comments: [
       {
+        id: "a",
         username: "twitch",
         text: "Epic Street Fighter action here in Las Vegas at #EVO2017!"
       },
       {
+        id: "b",
         username: "michaelmarzetta",
         text: "Omg that match was crazy"
       },
       {
+        id: "c",
         username: "themexican_leprechaun",
         text: "What a setup"
       },
       {
+        id: "d",
         username: "dennis_futbol",
         text: "It that injustice"
       },
       {
+        id: "e", 
         username: "dennis_futbol",
         text: "Is"
       }
@@ -68,14 +76,17 @@ const dummyData = [
     timestamp: "July 14 2017, 10:04:08 am",
     comments: [
       {
+        id: "a",
         username: "playhearthstone",
         text: "Love this shot!"
       },
       {
+        id: "b",
         username: "awaywetravel",
         text: "Yosemite is my most favorite place in the universe"
       },
       {
+        id: "c",
         username: "awesomebt28",
         text: "I like how Half Dome looks so old and useless"
       }
