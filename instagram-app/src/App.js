@@ -10,7 +10,8 @@ class App extends React.Component {
     super();
     this.state = {
       appData: [],
-      currentUser: 'newUser_'
+      currentUser: 'newUser_',
+      searchTerm: ''
     };
   }
 
@@ -42,16 +43,24 @@ class App extends React.Component {
     this.setState({ appData: posts });
   };
 
+  searchInput = e => {
+    this.setState({ searchTerm: e.target.value });
+  };
+
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header
+          searchInput={this.searchInput}
+          searchTerm={this.state.searchTerm}
+        />
         <main className="main-container">
           <PostContainer
             appData={this.state.appData}
             addComment={this.addComment}
             likePost={this.likePost}
             currentUser={this.state.currentUser}
+            searchTerm={this.state.searchTerm}
           />
           <SideBar />
         </main>

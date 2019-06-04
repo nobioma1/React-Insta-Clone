@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './postContainer.css';
 import Post from './Post';
+import './postContainer.css';
 
 const PostContainer = props => {
+  let filteredAppData = props.appData.filter(post => {
+    return post.username.indexOf(props.searchTerm) !== -1;
+  });
+
   return (
     <section className="posts-container">
-      {props.appData.length > 0 ? (
-        props.appData.map(info => (
+      {filteredAppData.length > 0 ? (
+        filteredAppData.map(info => (
           <div key={info.id}>
             <Post
               postInfo={info}

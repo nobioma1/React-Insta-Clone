@@ -9,7 +9,7 @@ import {
 } from 'react-icons/fi';
 import './header.css';
 
-const Header = () => {
+const Header = props => {
   return (
     <div className="header">
       <div className="header-content">
@@ -20,7 +20,7 @@ const Header = () => {
           <h1>Instagram</h1>
         </div>
 
-        <Search />
+        <Search searchInput={props.searchInput} searchTerm={props.searchTerm} />
 
         <div className="option-buttons">
           <div className="icon">
