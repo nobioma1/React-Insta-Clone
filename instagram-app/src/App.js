@@ -9,7 +9,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      appData: []
+      appData: [],
+      currentUser: 'newUser_'
     };
   }
 
@@ -17,14 +18,27 @@ class App extends React.Component {
     this.setState({ appData: dummyData });
   }
 
+  likePost = postId => {
+    const posts = this.state.appData;
+    const postIndex = posts.findIndex(post => post.id === postId);
+
+    posts[postIndex].likes = posts[postIndex].likes + 1;
+    posts[postIndex].liked = [
+      ...posts[postIndex].liked,
+      this.state.currentUser
+    ];
+
+    this.setState({ appData: posts });
+  };
+
   addComment = (postId, newComment) => {
     const posts = this.state.appData;
     const postIndex = this.state.appData.findIndex(post => post.id === postId);
-    const newPost = {
+    newComment.username = this.state.currentUser;
+    posts[postIndex] = {
       ...posts[postIndex],
       comments: [...posts[postIndex].comments, newComment]
     };
-    posts[postIndex] = newPost;
     this.setState({ appData: posts });
   };
 
@@ -36,6 +50,8 @@ class App extends React.Component {
           <PostContainer
             appData={this.state.appData}
             addComment={this.addComment}
+            likePost={this.likePost}
+            currentUser={this.state.currentUser}
           />
           <SideBar />
         </main>
