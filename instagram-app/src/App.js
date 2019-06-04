@@ -16,7 +16,17 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ appData: dummyData });
+    let data = window.localStorage.getItem('insta-clone-noble');
+    if (data !== null) {
+      this.setState({ appData: JSON.parse(data) });
+    } else {
+      this.setState({ appData: dummyData });
+    }
+  }
+
+  componentDidUpdate() {
+    let data = JSON.stringify(this.state.appData);
+    window.localStorage.setItem('insta-clone-noble', data);
   }
 
   likePost = postId => {
