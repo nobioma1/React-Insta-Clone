@@ -1,0 +1,32 @@
+*,
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  margin: 0;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #fafafa;
+}
+
+.App {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.main-container {
+  position: absolute;
+  margin-top: 77px;
+  width: 930px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 0;
+  margin-bottom: 30px;
+}
+@media (max-width: 500px) {
+  .main-container {
+    width: 100%;
+  }
+}
