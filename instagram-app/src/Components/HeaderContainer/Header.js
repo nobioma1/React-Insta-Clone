@@ -1,6 +1,12 @@
 import React from 'react';
 import Search from '../SearchBar/Search';
-import { FiInstagram, FiHeart, FiCompass, FiUser } from 'react-icons/fi';
+import {
+  FiInstagram,
+  FiHeart,
+  FiCompass,
+  FiUser,
+  FiUserPlus
+} from 'react-icons/fi';
 import './header.css';
 
 const Header = () => {
@@ -25,6 +31,9 @@ const Header = () => {
           </div>
           <div className="icon">
             <FiUser />
+          </div>
+          <div className="icon">
+            <FiUserPlus />
           </div>
         </div>
       </div>
