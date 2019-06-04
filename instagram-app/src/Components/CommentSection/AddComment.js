@@ -20,7 +20,6 @@ class AddComment extends React.Component {
     if (this.state.newComment.length > 0) {
       const newComment = {
         id: uuid(),
-        username: 'newuser_',
         text: this.state.newComment
       };
       this.props.addComment(this.props.postId, newComment);

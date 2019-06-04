@@ -9,7 +9,12 @@ const PostContainer = props => {
       {props.appData.length > 0 ? (
         props.appData.map(info => (
           <div key={info.id}>
-            <Post userInfo={info} addComment={props.addComment} />
+            <Post
+              postInfo={info}
+              addComment={props.addComment}
+              likePost={props.likePost}
+              currentUser={props.currentUser}
+            />
           </div>
         ))
       ) : (
