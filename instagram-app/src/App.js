@@ -9,8 +9,12 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      appData: dummyData
+      appData: []
     };
+  }
+
+  componentDidMount() {
+    this.setState({ appData: dummyData });
   }
 
   addComment = (postId, newComment) => {
