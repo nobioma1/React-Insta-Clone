@@ -36,7 +36,7 @@ const Post = props => {
               <FiHeart />
             </i>
             <i>
-              <FaRegComment />
+              <FaRegComment className="comment-icon"/>
             </i>
             <i>
               <FiShare />
