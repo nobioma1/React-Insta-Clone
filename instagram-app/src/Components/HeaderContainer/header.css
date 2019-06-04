@@ -52,3 +52,22 @@
   width: 150px;
   justify-content: space-between;
 }
+
+.header .header-content .option-buttons .icon:nth-child(4) {
+  display: none;
+}
+@media (max-width: 500px) {
+  .header .header-content .option-buttons .icon:nth-child(1) {
+    display: none;
+  }
+  .header .header-content .option-buttons .icon:nth-child(2) {
+    display: none;
+  }
+  .header .header-content .option-buttons .icon:nth-child(3) {
+    display: none;
+  }
+  .header .header-content .option-buttons .icon:nth-child(4) {
+    display: flex;
+    padding-left: 80%;
+  }
+}

@@ -2,7 +2,7 @@
   height: 100%;
   width: 70%;
 }
-@media (max-width: 500px) {
+@media (max-width: 820px) {
   .posts-container {
     width: 100%;
   }
@@ -14,7 +14,7 @@
   border-radius: 4px;
   border: 1px solid #999;
 }
-@media (max-width: 500px) {
+@media (max-width: 820px) {
   .post {
     width: 100%;
     margin-top: 3px;
@@ -65,6 +65,10 @@
 .image-container .post-details .post-icons i {
   font-size: 3.8rem;
   margin-right: 15px;
+}
+
+.image-container .post-details .post-icons i .comment-icon {
+  transform: rotateY(180deg)
 }
 
 .image-container .post-details .details span {
