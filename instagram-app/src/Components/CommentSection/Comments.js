@@ -22,4 +22,8 @@ Comments.propTypes = {
   })).isRequired
 }
 
+Comments.defaultProps = {
+  postComments: []
+}
+
 export default Comments;
