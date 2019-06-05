@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import AddComment from '../CommentSection/AddComment';
 import Comments from '../CommentSection/Comments';
 import { FiHeart, FiShare } from 'react-icons/fi';
-import { FaRegComment } from 'react-icons/fa';
+import { FaHeart, FaRegComment } from 'react-icons/fa';
 
 const Post = props => {
   const {
@@ -13,11 +13,19 @@ const Post = props => {
     thumbnailUrl,
     imageUrl,
     likes,
+    liked,
     timestamp,
-    comments,
-  } = props.userInfo;
+    comments
+  } = props.postInfo;
 
   const postTime = Moment(Date.parse(timestamp)).fromNow();
+
+  const likedHeart = () => {
+    if (liked.includes(props.currentUser)) {
+      return <FaHeart style={{color: "red"}} onClick={() => props.likePost(id)}/>;
+    }
+    return <FiHeart onClick={() => props.likePost(id)}/>
+  };
 
   return (
     <div className="post">
@@ -29,14 +37,13 @@ const Post = props => {
       </div>
       <div className="image-container">
         <img src={imageUrl} alt="post" />
-        <div className="image-buttons" />
         <div className="post-details">
           <div className="post-icons">
             <i>
-              <FiHeart />
+              {likedHeart()}
             </i>
             <i>
-              <FaRegComment />
+              <FaRegComment className="comment-icon" />
             </i>
             <i>
               <FiShare />
@@ -52,13 +59,13 @@ const Post = props => {
         <Comments postComments={comments} />
         <p className="time">{postTime.toUpperCase()}</p>
       </div>
-      <AddComment postId={id} addComment={props.addComment}/>
+      <AddComment postId={id} addComment={props.addComment} />
     </div>
   );
 };
 
 Post.propTypes = {
-  userInfo: PropTypes.shape({
+  postInfo: PropTypes.shape({
     username: PropTypes.string.isRequired,
     thumbnailUrl: PropTypes.string.isRequired,
     imageUrl: PropTypes.string,

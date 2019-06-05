@@ -9,32 +9,68 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      appData: dummyData
+      appData: [],
+      currentUser: 'newUser_',
+      searchTerm: ''
     };
   }
 
-  addComment = (postId, comment) => {
+  componentDidMount() {
+    let data = window.localStorage.getItem('insta-clone-noble');
+    if (data !== null) {
+      this.setState({ appData: JSON.parse(data) });
+    } else {
+      this.setState({ appData: dummyData });
+    }
+  }
+
+  componentDidUpdate() {
+    let data = JSON.stringify(this.state.appData);
+    window.localStorage.setItem('insta-clone-noble', data);
+  }
+
+  likePost = postId => {
+    const posts = this.state.appData;
+    const postIndex = posts.findIndex(post => post.id === postId);
+
+    posts[postIndex].likes = posts[postIndex].likes + 1;
+    posts[postIndex].liked = [
+      ...posts[postIndex].liked,
+      this.state.currentUser
+    ];
+
+    this.setState({ appData: posts });
+  };
+
+  addComment = (postId, newComment) => {
     const posts = this.state.appData;
     const postIndex = this.state.appData.findIndex(post => post.id === postId);
-    const newPost = {
+    newComment.username = this.state.currentUser;
+    posts[postIndex] = {
       ...posts[postIndex],
-      comments: [
-        ...posts[postIndex].comments,
-        { username: 'thenewuser_', text: comment }
-      ]
+      comments: [...posts[postIndex].comments, newComment]
     };
-    posts[postIndex] = newPost;
     this.setState({ appData: posts });
+  };
+
+  searchInput = e => {
+    this.setState({ searchTerm: e.target.value });
   };
 
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header
+          searchInput={this.searchInput}
+          searchTerm={this.state.searchTerm}
+        />
         <main className="main-container">
           <PostContainer
             appData={this.state.appData}
             addComment={this.addComment}
+            likePost={this.likePost}
+            currentUser={this.state.currentUser}
+            searchTerm={this.state.searchTerm}
           />
           <SideBar />
         </main>

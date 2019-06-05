@@ -1,9 +1,15 @@
 import React from 'react';
 import Search from '../SearchBar/Search';
-import { FiInstagram, FiHeart, FiCompass, FiUser } from 'react-icons/fi';
+import {
+  FiInstagram,
+  FiHeart,
+  FiCompass,
+  FiUser,
+  FiUserPlus
+} from 'react-icons/fi';
 import './header.css';
 
-const Header = () => {
+const Header = props => {
   return (
     <div className="header">
       <div className="header-content">
@@ -14,7 +20,7 @@ const Header = () => {
           <h1>Instagram</h1>
         </div>
 
-        <Search />
+        <Search searchInput={props.searchInput} searchTerm={props.searchTerm} />
 
         <div className="option-buttons">
           <div className="icon">
@@ -25,6 +31,9 @@ const Header = () => {
           </div>
           <div className="icon">
             <FiUser />
+          </div>
+          <div className="icon">
+            <FiUserPlus />
           </div>
         </div>
       </div>
