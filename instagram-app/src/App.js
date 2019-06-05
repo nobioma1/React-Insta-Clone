@@ -32,12 +32,22 @@ class App extends React.Component {
   likePost = postId => {
     const posts = this.state.appData;
     const postIndex = posts.findIndex(post => post.id === postId);
+    const likedAlready = posts[postIndex].liked.find(
+      user => user === this.state.currentUser
+    );
 
+    if (!likedAlready) {
     posts[postIndex].likes = posts[postIndex].likes + 1;
     posts[postIndex].liked = [
       ...posts[postIndex].liked,
       this.state.currentUser
     ];
+    } else {
+      posts[postIndex].likes = posts[postIndex].likes - 1;
+      posts[postIndex].liked = posts[postIndex].liked.filter(
+        user => user !== this.state.currentUser
+      );
+    }
 
     this.setState({ appData: posts });
   };
