@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  margin-top: 15%;
+  margin-top: 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -62,6 +62,7 @@ const Button = styled.button`
   padding: 8px;
   margin: 10px 0;
   border-radius: 3px;
+  opacity: ${props => props.active ? '1' : '.3'};
   &:focus {
     outline: none;
   }
@@ -131,7 +132,7 @@ class Login extends React.Component {
               placeholder="Password"
               required
             />
-            <Button>Log In</Button>
+            <Button active={this.state.username.length > 0}>Log In</Button>
           </Form>
         </CardContainer>
 
