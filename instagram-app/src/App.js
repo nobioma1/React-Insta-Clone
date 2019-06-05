@@ -1,9 +1,7 @@
 import React from 'react';
 import './App.css';
-import Header from './Components/HeaderContainer/Header';
-import PostContainer from './Components/PostContainer/PostContainer';
-import SideBar from './Components/SideBar/SideBar';
 import dummyData from './dummy-data';
+import PostPage from './Components/PostContainer/PostPage';
 
 class App extends React.Component {
   constructor() {
@@ -37,11 +35,11 @@ class App extends React.Component {
     );
 
     if (!likedAlready) {
-    posts[postIndex].likes = posts[postIndex].likes + 1;
-    posts[postIndex].liked = [
-      ...posts[postIndex].liked,
-      this.state.currentUser
-    ];
+      posts[postIndex].likes = posts[postIndex].likes + 1;
+      posts[postIndex].liked = [
+        ...posts[postIndex].liked,
+        this.state.currentUser
+      ];
     } else {
       posts[postIndex].likes = posts[postIndex].likes - 1;
       posts[postIndex].liked = posts[postIndex].liked.filter(
@@ -70,20 +68,14 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header
+        <PostPage
           searchInput={this.searchInput}
           searchTerm={this.state.searchTerm}
+          appData={this.state.appData}
+          addComment={this.addComment}
+          likePost={this.likePost}
+          currentUser={this.state.currentUser}
         />
-        <main className="main-container">
-          <PostContainer
-            appData={this.state.appData}
-            addComment={this.addComment}
-            likePost={this.likePost}
-            currentUser={this.state.currentUser}
-            searchTerm={this.state.searchTerm}
-          />
-          <SideBar />
-        </main>
       </div>
     );
   }
