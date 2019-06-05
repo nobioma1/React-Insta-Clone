@@ -1,5 +1,9 @@
 # React-Insta-Clone
 
+- https://instaclone-noble.netlify.com/
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6e0cd08e-d75a-4378-8ddf-33103b25b762/deploy-status)](https://app.netlify.com/sites/instaclone-noble/deploys)
+
 ## Introduction
 
 - The purpose of this project is to continue building on your knowledge of React that you have gained thus far.
