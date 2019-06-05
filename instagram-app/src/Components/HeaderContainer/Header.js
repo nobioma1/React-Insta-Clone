@@ -1,13 +1,13 @@
 import React from 'react';
 import Search from '../SearchBar/Search';
-import {
-  FiInstagram,
-  FiHeart,
-  FiCompass,
-  FiUser,
-  FiUserPlus
-} from 'react-icons/fi';
+import { FiInstagram, FiHeart, FiCompass, FiUser } from 'react-icons/fi';
+import { IoIosLogOut } from 'react-icons/io';
 import './header.css';
+
+const logOut = () => {
+  localStorage.removeItem('insta-clone-noble-user');
+  window.location.reload();
+}
 
 const Header = props => {
   return (
@@ -30,10 +30,10 @@ const Header = props => {
             <FiHeart />
           </div>
           <div className="icon">
-            <FiUser />
+            <FiUser onClick={() => logOut()} />
           </div>
           <div className="icon">
-            <FiUserPlus />
+            <IoIosLogOut onClick={() => logOut()} />
           </div>
         </div>
       </div>
