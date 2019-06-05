@@ -2,22 +2,26 @@ import React from 'react';
 import './App.css';
 import dummyData from './dummy-data';
 import PostPage from './Components/PostContainer/PostPage';
+import Login from './Components/Login/Login';
 import withAuthenticate from './Components/authentication/withAuthenticate';
 
-const ComponentFromWithAuthenticate = withAuthenticate(PostPage);
+const ComponentFromWithAuthenticate = withAuthenticate(PostPage)(Login);
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       appData: [],
-      currentUser: 'newUser_',
+      currentUser: '',
       searchTerm: ''
     };
   }
 
   componentDidMount() {
-    let data = window.localStorage.getItem('insta-clone-noble');
+    let data = localStorage.getItem('insta-clone-noble');
+    let currentUser = localStorage.getItem('insta-clone-noble-user');
+    this.setState({ currentUser });
+
     if (data !== null) {
       this.setState({ appData: JSON.parse(data) });
     } else {
