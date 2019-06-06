@@ -1,7 +1,7 @@
 import React from 'react';
 import './sidebar.css';
 
-const SideBar = () => {
+const SideBar = props => {
   return (
     <section className="side-bar">
       <div className="user">
@@ -11,7 +11,7 @@ const SideBar = () => {
             alt=""
           />
         </div>
-        <h2>Noble Obioma</h2>
+        <h2>{props.currentUser}</h2>
       </div>
       <div className="card">
         <div className="card-header">

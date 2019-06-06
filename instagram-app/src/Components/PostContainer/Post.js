@@ -36,7 +36,7 @@ const Post = props => {
         <h4>{username}</h4>
       </div>
       <div className="image-container">
-        <img src={imageUrl} alt="post" />
+        <img onDoubleClick={() => props.likePost(id)} src={imageUrl} alt="post" />
         <div className="post-details">
           <div className="post-icons">
             <i>

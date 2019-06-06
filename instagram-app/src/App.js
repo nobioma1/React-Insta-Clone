@@ -1,22 +1,27 @@
 import React from 'react';
 import './App.css';
-import Header from './Components/HeaderContainer/Header';
-import PostContainer from './Components/PostContainer/PostContainer';
-import SideBar from './Components/SideBar/SideBar';
 import dummyData from './dummy-data';
+import PostPage from './Components/PostContainer/PostPage';
+import Login from './Components/Login/Login';
+import withAuthenticate from './Components/authentication/withAuthenticate';
+
+const ComponentFromWithAuthenticate = withAuthenticate(PostPage)(Login);
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       appData: [],
-      currentUser: 'newUser_',
+      currentUser: '',
       searchTerm: ''
     };
   }
 
   componentDidMount() {
-    let data = window.localStorage.getItem('insta-clone-noble');
+    let data = localStorage.getItem('insta-clone-noble');
+    let currentUser = localStorage.getItem('insta-clone-noble-user');
+    this.setState({ currentUser });
+
     if (data !== null) {
       this.setState({ appData: JSON.parse(data) });
     } else {
@@ -32,12 +37,22 @@ class App extends React.Component {
   likePost = postId => {
     const posts = this.state.appData;
     const postIndex = posts.findIndex(post => post.id === postId);
+    const likedAlready = posts[postIndex].liked.find(
+      user => user === this.state.currentUser
+    );
 
-    posts[postIndex].likes = posts[postIndex].likes + 1;
-    posts[postIndex].liked = [
-      ...posts[postIndex].liked,
-      this.state.currentUser
-    ];
+    if (!likedAlready) {
+      posts[postIndex].likes = posts[postIndex].likes + 1;
+      posts[postIndex].liked = [
+        ...posts[postIndex].liked,
+        this.state.currentUser
+      ];
+    } else {
+      posts[postIndex].likes = posts[postIndex].likes - 1;
+      posts[postIndex].liked = posts[postIndex].liked.filter(
+        user => user !== this.state.currentUser
+      );
+    }
 
     this.setState({ appData: posts });
   };
@@ -60,20 +75,14 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header
+        <ComponentFromWithAuthenticate
           searchInput={this.searchInput}
           searchTerm={this.state.searchTerm}
+          appData={this.state.appData}
+          addComment={this.addComment}
+          likePost={this.likePost}
+          currentUser={this.state.currentUser}
         />
-        <main className="main-container">
-          <PostContainer
-            appData={this.state.appData}
-            addComment={this.addComment}
-            likePost={this.likePost}
-            currentUser={this.state.currentUser}
-            searchTerm={this.state.searchTerm}
-          />
-          <SideBar />
-        </main>
       </div>
     );
   }
