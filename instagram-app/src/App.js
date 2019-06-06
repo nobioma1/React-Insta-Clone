@@ -1,9 +1,16 @@
 import React from 'react';
-import './App.css';
+import styled from 'styled-components';
+import './global.css';
 import dummyData from './dummy-data';
 import PostPage from './Components/PostContainer/PostPage';
 import Login from './Components/Login/Login';
 import withAuthenticate from './Components/authentication/withAuthenticate';
+
+const AppContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
 
 const ComponentFromWithAuthenticate = withAuthenticate(PostPage)(Login);
 
@@ -74,7 +81,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <AppContainer>
         <ComponentFromWithAuthenticate
           searchInput={this.searchInput}
           searchTerm={this.state.searchTerm}
@@ -83,7 +90,7 @@ class App extends React.Component {
           likePost={this.likePost}
           currentUser={this.state.currentUser}
         />
-      </div>
+      </AppContainer>
     );
   }
 }

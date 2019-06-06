@@ -14,6 +14,10 @@ const Container = styled.div`
     width: 100%;
     margin: 20px;
   }
+
+  p {
+    margin: 10px 0;
+  }
 `;
 
 const CardContainer = styled.div`
@@ -27,29 +31,34 @@ const CardContainer = styled.div`
   padding: 30px 0;
   margin: 8px 0;
   font-size: 2.3rem;
-`;
 
-const HeaderTitle = styled.h1`
-  font-size: 5rem;
-  font-family: Billabong;
-  font-weight: 100;
-  letter-spacing: 2.5px;
-  margin-bottom: 30px;
-`;
+  h2 {
+    font-size: 5rem;
+    font-family: Billabong;
+    font-weight: 100;
+    letter-spacing: 2.5px;
+    margin-bottom: 30px;
+  }
 
-const Form = styled.form`
-  width: 70%;
-  font-size: 2.3rem;
-`;
+  form {
+    width: 70%;
+    font-size: 2.3rem;
+  }
 
-const Input = styled.input`
-  width: 100%;
-  margin: 5px 0;
-  padding: 8px;
-  border-radius: 3px;
-  border: 1px solid lightgray;
-  &:focus {
-    outline: none;
+  span {
+    color: dodgerblue;
+    font-size: 1.3rem;
+  }
+
+  input {
+    width: 100%;
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 3px;
+    border: 1px solid lightgray;
+    &:focus {
+      outline: none;
+    }
   }
 `;
 
@@ -62,20 +71,10 @@ const Button = styled.button`
   padding: 8px;
   margin: 10px 0;
   border-radius: 3px;
-  opacity: ${props => props.active ? '1' : '.3'};
+  opacity: ${props => (props.active ? '1' : '.3')};
   &:focus {
     outline: none;
   }
-`;
-
-const Span = styled.span`
-  color: dodgerblue;
-  font-size: 1.3rem;
-`;
-
-const P = styled.p`
-  text-align: center;
-  margin: 10px 0;
 `;
 
 const FooterContainer = styled.div`
@@ -89,16 +88,16 @@ const ImageDiv = styled.div`
   width: 45%;
   display: flex;
   align-items: center;
-`;
 
-const ImageIcon = styled.img`
-  width: 100%;
+  img {
+    width: 100%;
+  }
 `;
 
 class Login extends React.Component {
   state = {
     username: '',
-    password: '',
+    password: ''
   };
 
   inputChange = (value, state) => {
@@ -106,26 +105,26 @@ class Login extends React.Component {
     if (state === 'password') this.setState({ password: value });
   };
 
-  submitHandler = (e) => {
+  submitHandler = e => {
     e.preventDefault();
     localStorage.setItem('insta-clone-noble-user', this.state.username.trim());
     this.setState({ state: this.state });
     window.location.reload();
-  }
+  };
 
   render() {
     return (
       <Container>
         <CardContainer>
-          <HeaderTitle>Instagram</HeaderTitle>
-          <Form onSubmit={this.submitHandler}>
-            <Input
+          <h2>Instagram</h2>
+          <form onSubmit={this.submitHandler}>
+            <input
               type="text"
               value={this.state.username}
               onChange={e => this.inputChange(e.target.value, 'username')}
               placeholder="Username"
             />
-            <Input
+            <input
               type="password"
               value={this.state.password}
               onChange={e => this.inputChange(e.target.value, 'password')}
@@ -133,22 +132,28 @@ class Login extends React.Component {
               required
             />
             <Button active={this.state.username.length > 0}>Log In</Button>
-          </Form>
+          </form>
         </CardContainer>
 
         <CardContainer>
           <p>Don't Have an account?</p>
-          <Span>Just Enter a Username and a Password</Span>
+          <span>Just Enter a Username and a Password</span>
         </CardContainer>
 
-        <P>Get the app.</P>
+        <p>Get the app.</p>
 
         <FooterContainer>
           <ImageDiv>
-            <ImageIcon src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_english-en.png/180ae7a0bcf7.png" />
+            <img
+              src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_english-en.png/180ae7a0bcf7.png"
+              alt="Apple app store icon"
+            />
           </ImageDiv>
           <ImageDiv>
-            <ImageIcon src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_english-en.png/e9cd846dc748.png" />
+            <img
+              src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_english-en.png/e9cd846dc748.png"
+              alt="google app store icon"
+            />
           </ImageDiv>
         </FooterContainer>
       </Container>
