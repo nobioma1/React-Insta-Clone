@@ -1,7 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import uuid from 'uuid/v4';
-import './addComment.css';
+import styled from 'styled-components';
+
+const AddCommentContainer = styled.div`
+  form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid lightgray;
+
+    input {
+      width: 90%;
+      border: none;
+      font-size: 14px;
+      padding: 20px 10px;
+      background-color: transparent;
+      &:focus {
+        outline: none;
+      }
+    }
+    @media (max-width: 500px) {
+      width: 80%;
+    }
+
+    button {
+      width: 10%;
+      border: none;
+      font-size: 14px;
+      font-weight: bold;
+      background-color: transparent;
+      color: dodgerblue;
+      &:focus {
+        outline: none;
+      }
+      @media (max-width: 500px) {
+        width: 20%;
+      }
+    }
+  }
+`;
 
 class AddComment extends React.Component {
   constructor(props) {
@@ -29,7 +67,7 @@ class AddComment extends React.Component {
 
   render() {
     return (
-      <div className="add-comment">
+      <AddCommentContainer>
         <form onSubmit={e => this.updateHandler(e)}>
           <input
             type="text"
@@ -44,7 +82,7 @@ class AddComment extends React.Component {
             Post
           </button>
         </form>
-      </div>
+      </AddCommentContainer>
     );
   }
 }
