@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Avatar } from '../reusable';
 
 const SideBarContainer = styled.div`
   margin-top: 50px;
@@ -24,18 +25,6 @@ const CurrentUser = styled.div`
   align-items: center;
   width: 100%;
   height: 60px;
-`;
-
-const Avatar = styled.div`
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
-
-  img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-  }
 `;
 
 const SideBarCard = styled.div`
